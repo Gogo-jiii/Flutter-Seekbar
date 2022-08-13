@@ -30,13 +30,31 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  double initialValue = 50;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(),
+      body: Center(
+        child: Slider(
+          activeColor: Colors.blue,
+          inactiveColor: Colors.grey,
+          thumbColor: Colors.blue,
+          divisions: 100,
+          label: initialValue.round().toString(),
+          min: 0,
+          max: 100,
+          value: initialValue,
+          onChanged: (double value) {
+            setState(() {
+              initialValue = value;
+            });
+          },
+        ),
+      ),
     );
   }
 }
